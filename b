@@ -1,0 +1,1 @@
+git fetch --all && git branch -r
