@@ -6,6 +6,9 @@
   "repository": "https://github.com/Nikire/WebSocketChat.git",
   "author": "erikpastuszek@gmail.com <erikpastuszek@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
