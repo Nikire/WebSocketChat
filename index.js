@@ -19,7 +19,13 @@ io.on('connection', (socket) => {
   socket.on('test', () => console.log(socket.id + ' APRETÓ BOTON'));
 });
 
+require('./src/events')(io);
+
 sequelize.sync({ force: true }).then(() => {
   console.log('sequelize conected');
   httpServer.listen(PORT);
+  setTimeout(function () {
+    // Your code to be executed after 1000ms (1 second)
+    io.emit('message', 'test');
+  }, 1000);
 });
