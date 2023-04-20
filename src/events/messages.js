@@ -1,6 +1,6 @@
-module.exports = (io) => {
-  io.on('message', (newMessage) => {
-    io.emit('message-fe', newMessage);
-    console.log('emitiendo msg');
+module.exports = (socket) => {
+  socket.on('message', (newMessage) => {
+    socket.emit('message-fe', newMessage);
+    console.log(newMessage);
   });
 };
