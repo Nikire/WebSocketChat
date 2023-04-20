@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { sequelize } = require('./src/sequelize.js');
 
 const { PORT, ORIGIN } = process.env;
 const cors = require('cors');
@@ -24,5 +25,6 @@ io.on('connection', (socket) => {
 });
 
 sequelize.sync({ force: true }).then(() => {
+  console.log('sequelize conected');
   httpServer.listen(PORT);
 });

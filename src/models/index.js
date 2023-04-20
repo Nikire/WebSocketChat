@@ -1,6 +1,6 @@
 module.exports = (sequelize) => {
-  // const User = require('./User')(sequelize);
-  // const Post = require('./Post')(sequelize);
-  // return { User, Post}
-  return {};
+  const User = require('./User')(sequelize);
+  const Message = require('./Message')(sequelize);
+
+  return { User, Message };
 };
