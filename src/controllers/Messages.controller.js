@@ -6,7 +6,7 @@ const {
 const getAllMessages = async (req, res, next) => {
   try {
     let messages = await Message.findAll();
-    res.status(201).json(messages);
+    res.status(200).json(messages);
   } catch (error) {
     next(error);
   }
