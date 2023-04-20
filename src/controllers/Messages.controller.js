@@ -3,12 +3,12 @@ const {
   models: { Message },
 } = require('../sequelize.js');
 
-const getAllMessages = async (req, res) => {
+const getAllMessages = async (req, res, next) => {
   try {
     let messages = await Message.findAll();
-    res.status(201).send(messages);
+    res.status(201).json(messages);
   } catch (error) {
-    res.status(400).send(error.message);
+    next(error);
   }
 };
 

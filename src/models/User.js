@@ -26,5 +26,6 @@ module.exports = (sequelize) => {
       unique: true,
     },
   });
+  User.associate = function (models) {};
   return User;
 };
