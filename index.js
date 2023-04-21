@@ -16,7 +16,7 @@ const io = new Server(httpServer, {
 
 io.on('connection', (socket) => {
   console.log('CONNECTED ' + socket.id);
-  require('./src/events')(socket);
+  require('./src/events')(socket, io);
 });
 
 sequelize.sync({ force: true }).then(() => {

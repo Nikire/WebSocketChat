@@ -1,3 +1,3 @@
-module.exports = (socket) => {
-  require('./messages')(socket);
+module.exports = (socket, io) => {
+  require('./messages')(socket, io);
 };
