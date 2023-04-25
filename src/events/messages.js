@@ -1,6 +1,6 @@
 module.exports = (socket, io) => {
-  socket.on('message', (newMessage) => {
-    io.emit('message-fe', newMessage);
-    console.log(newMessage);
+  socket.on('message', (text, type) => {
+    io.emit('message-fe', text, type);
+    console.log(text);
   });
 };

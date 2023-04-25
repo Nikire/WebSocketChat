@@ -48,7 +48,7 @@ const login = async (req, res, next) => {
     if (!user) {
       return res
         .status(400)
-        .json({ message: 'The username/email is incorrect or does not exist' });
+        .json({ message: 'The username is incorrect or does not exist' });
     }
     bcrypt.genSalt(10, async (error, salt) => {
       if (error) return res.status(400).json(error);
@@ -69,7 +69,6 @@ const login = async (req, res, next) => {
         });
       }
       // Verify that user exists
-      const user = { username, password };
       const accessToken = jwt.sign({ user }, JWT_ACCESS_TOKEN, {
         expiresIn: '1m',
       });
