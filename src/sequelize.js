@@ -10,9 +10,9 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
 
 const models = require('./models')(sequelize);
 
-//associations
-// models.User.associate(models);
-// models.Post.associate(models);
+// Associations
+models.User.associate(models);
+models.Message.associate(models);
 
 module.exports = { sequelize, models };
 
