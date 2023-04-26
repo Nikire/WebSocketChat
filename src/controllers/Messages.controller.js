@@ -32,7 +32,7 @@ const createMessage = async (req, res, next) => {
   const { text } = req.body;
   const userId = req.user.id;
   try {
-    let msg = await Message.create({
+    await Message.create({
       text,
       userId,
     });
