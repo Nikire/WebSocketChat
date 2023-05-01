@@ -1,4 +1,8 @@
 const jwt = require('jsonwebtoken');
+const {
+  models: { User },
+} = require('../sequelize.js');
+const { Sequelize } = require('sequelize');
 
 module.exports = {
   errorHandler: () => (err, req, res, next) => {
@@ -24,7 +28,7 @@ module.exports = {
   },
   validateUser:
     (type = '') =>
-    (req, res, next) => {
+    async (req, res, next) => {
       let { username, name, email, password } = req.body;
       try {
         // Type Validation
@@ -117,6 +121,16 @@ module.exports = {
             message:
               'Invalid name, please enter a valid name (must be just letters and 3-25 characters long)',
           });
+        }
+        const userExist = await User.findOne({
+          where: {
+            [Sequelize.Op.or]: [{ username }, { email }],
+          },
+        });
+        if (userExist) {
+          return res
+            .status(400)
+            .json({ error: true, message: 'Username/email already exists' });
         }
         next();
       } catch (error) {
