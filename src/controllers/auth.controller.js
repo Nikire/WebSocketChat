@@ -24,7 +24,7 @@ const register = async (req, res, next) => {
           password,
         });
         const accessToken = jwt.sign({ user }, process.env.JWT_ACCESS_TOKEN, {
-          expiresIn: '1m',
+          expiresIn: '7d',
         });
         res
           .status(200)
